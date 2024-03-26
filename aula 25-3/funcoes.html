@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções</title>
+</head>
+<script>
+    console.log(cumprimento()); //hoisting: podemos chamar a função antes da criação
+     function cumprimento(){
+        console.log("Olá boa noite"); 
+     }
+     console.log(cumprimento()) //chamada
+
+     let funcAnonima= function(){ //função nao possui nome
+        console.log("Isso é uma função anonima "); 
+     }
+     console.log("Conteudo"+funcAnonima);
+     funcAnonima(); //chamada
+
+     let helloWorld= () => console.log("Ola mundo"); // função com arrow function
+     helloWorld(); // chamada
+
+      let multiplicacao=(a,b)=> a*b; // arrow function com parametro;
+      console.log(multiplicacao(10,2));// chamada
+
+     let soma=function(a,b){ //funcao anonima
+        return a+b;
+     }
+     console.log(soma(10,20)); //chamada
+
+</script>
+<body>
+    <h1>Funções</h1>
+    
+</body>
+</html>

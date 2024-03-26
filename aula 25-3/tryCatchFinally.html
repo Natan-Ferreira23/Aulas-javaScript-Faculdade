@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log("Tudo certo, até aqui");
+        let arquivoJSON="Exemplo de string no formato diferente de JSON !";
+        try{ //colocamos um comando que pode ocorrer um erro
+            const user=JSON.parse(arquivoJSON); // converte o objeto para JSON, mas a variavel nao é um objeto
+            console.log(user);
+        }catch(error){
+            console.error("Erro ao converter ",error); //aponta o erro.
+        }finally{
+            console.log("Finalizando a conexao com o arquivo !"); // ele sempre executa, tanto após o try e catch
+        }
+        let usuario;
+        try{
+            let nome= usuario.nome; //não é possivel acessar a propriedade nome do usuario
+            console.log(natan)
+        }catch(error){
+            console.error("Erro ao acessar a propriedade nome");
+        }
+
+       
+        try{
+            let resultado=10;
+            if(!isFinite(resultado)) throw new Error("O resultado da operação matematica não é finito");
+        }catch(error){
+             console.error("Erro na operação matematica: ",error);
+        }
+
+        function dividir_a_b(a,b){ // função que verifica se o parametro b é zero
+            try{
+            if(b===0)throw new Error ("Não se pode dividir por zero !");
+            return (a/b);
+        }catch(error){
+            console.error("Erro ao dividir: ", error); // se b for zero não é possivel dividir, um numero nao pode ser dividido por zero
+            return undefined;
+        }
+        }
+        console.log(dividir_a_b(10,0)); // chama a função
+
+        let result = dividir_a_b(10,0);
+        console.log((result ? result:""));
+       
+    </script>
+</head>
+<body>
+    <h1>Try Catch e Finally</h1>
+</body>
+</html>
