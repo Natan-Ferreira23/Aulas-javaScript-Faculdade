@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 1-4</title>
+</head>
+<body>
+ <h1>Veja o console.log</h1>   
+ <script>
+    function quadrado(x){
+        return x*x;
+    }
+    let valo1=10;
+    console.log("O valor 1 ao quadrado: "+quadrado(valo1));
+//////////////////////////////////////////////////////
+
+ let quad=(x)=>x*x; //usando arrow function
+ let valor2=5;
+ console.log("O valor 2ao quadrado:"+quad(valor2));
+////////////////////////////////////////////////////
+
+ let quad2=x=>x*x; // se houver só um parametro podemos omitir os parenteses;
+ let valor3=2;
+ console.log("O valor 3 ao quadrado: "+ quad2(valor3));
+ //////////////////////////////////////////////////
+
+ let af_sem_param=()=>console.log("Exemplo de arrow function sem passagem de parametro"); //podemos criar um array function sem parametro tambem
+ af_sem_param();
+
+ //////////////////////////////////////////////////
+
+ function multiplica (x,y=1){ // passamos1 para y
+    return x*y;
+ }
+ console.log("O valor multiplicado: "+multiplica(10)); // valor do parametro x é 10, resultado 10*1;
+ console.log("O valor multiplicado é: " + multiplica(10,5)) //passamos os dois valores 
+ ////////////////////////////////////////////////////
+
+ function cumprimento(name="Alex"){
+    console.log(`Ola ${name}`); // podemos atribuir um nome diretamente como padrão na função ex:ax
+ }
+ cumprimento();
+ ////////////////////////////////////////////////////
+
+ function listaFrutas(...frutas){// tres pontos significa rast parametro,posso passar varios parametros
+    console.log(frutas);
+ }
+ listaFrutas("Maça", "Banana","Abacaxi","Perâ"); // agora podemos passar varios parametros
+ 
+ /////////////////////////////////////////////////////
+ function soma(...numeros){//rast parametros, array de numeros
+    return numeros.reduce((total,num)=>total+num,0); 
+    //func reduce(reduz o array a um só valor, no caso resultado da soma), 
+    //passamos um arrow function, que soma cada valor de cada posição do array em uma variavel total, 
+    //que inicia com valor 0;
+ }
+ console.log("Função soma: "+soma(1,2,3,4,5,6));
+
+ ///////////////////////////////////////////////////
+
+ function funcaoExterna(){
+    let variavelExterna="Eu sou uma variavel Externa";
+    function funcaoInterna(){
+        console.log(variavelExterna); //closure
+    }
+    return funcaoInterna;
+ }
+ const minhaFuncaoInterna=funcaoExterna();
+ minhaFuncaoInterna();
+ /////////////////////////////////////////////////
+
+ function processaVetor(vet,operacao){ 
+      for(i=0;i<vet.length;i++){
+         operacao(vet[i]);
+      }
+ }
+ processaVetor([1,2,3,4,5,6,'xpto','melancia'],console.log);// percorre o vetor e da um console log em cada indice do vetor;
+ 
+ ////////////////////////////////////////////////
+ 
+ function multiplique(multiplicador){ // closure
+    return function (valor){
+        return valor*multiplicador;
+    }
+ }
+ const dobraValor=multiplique(2);
+ console.log(dobraValor(10));
+const triplicaValor=multiplique(3);
+console.log(triplicaValor(10));
+/////////////////////////////////////////////////
+
+
+ </script>
+</body>
+</html>
