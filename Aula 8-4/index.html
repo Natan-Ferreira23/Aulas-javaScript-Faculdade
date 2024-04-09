@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript assincrono</title>
+</head>
+<body>
+    <h1>Aula dia 08-04</h1>
+    
+    <script>
+      // operações de bloqueio são aquelas que impedem a execução de qualquer outro código até que sejam completadas;
+      //ex:( comando1 -> comando2 -> comando3 -> comando4) os comandos executam por vez, é um sistema linear, comando2 só ocorre depois do comando1 ser executado e finalizado;
+      // em um ambiente de pagina unica ou servidor, isso pode resultar em uma experiencia de usuariolenta e frustantes;
+      // em um servidorNode.js o ideal é não ser sincrona(sincrona=ler comando por vez);
+      //operações nao sincronas ballbacks,Promises e async/await permite que outras tarefas continuem a ser processadas no background;
+      //sincrono=código executado sequenciamente, cada operação bloqueia a proxxima até que seja executada;
+      //assincrona;
+      //operações assincrona  ex:api busca dados sem interromper a interação do usuário com a página;
+      //operação assincrona ex: chat ao vivo, jogos online, qualquer aplicação que tenha atualização em tempo real requer programação assincrona;
+
+
+      //técnica callback;
+      //callback funções que são passadas como argumentos para outra função e são chamadas após a conclusão de uma operação
+      //require('fs'); o require é um comando para importar uma biblioteca, no caso o fs;
+      //problemas callbacks, quando temos multiplos callbacks aninhados, sendo um código difícil de ler e confuso;
+
+      //Promises: representam um valor que pode estar disponivel agora, no futuro ou nunca;
+      //promises tem 3 estágios, pendente, cumprida,rejeitado,
+
+      //metódos promise: then(),catch() e finally();
+      //then() quando é cumprida;
+      //catch() deu erro,registra um callback
+      //finally() sempre executa
+      
+      //end point = endereço do recurso que eu quero acessar,http ou https;
+      //http://sitexpto.com:3050/api/get/full.json
+    //protocolo, endereço,porta,caminho,recurso/arquivo no servidor;
+
+    //abaixo temos uma conexão api e estamos utilizando metódos promise, dentro da func fetch vai o endpoint;
+    console.log("Acessando com promise"); 
+    fetch('https://reactnative.dev/movies.json')
+      .then(response=>response.json())//se deu certo
+      .then(data=>console.log(data.movies))//se deu certo
+      .catch(error=>console.error("Falha ao consultar API ",error))//se deu errado
+      .finally(()=>console.log("Conexão com a API finalizada !"));//acontece sempre
+
+      //Async/Await
+      //simplificam o uso de promises;
+      // não há necessidades de then,catch e finally;
+      // define uma funçao assincrona;
+      //exemplo
+      console.log("Async/Await"); 
+      async function buscarDados(){//é uma função assincrona
+         try{
+          const response= await fetch('https://reactnative.dev/movies.json'); // sincrono
+          const data= await response.json(); // depende da função acima para executar
+          return data.movies;
+         }catch(error){
+            console.error("Erro ao acessar API: "+error);
+         }
+      }
+      console.log(buscarDados()); 
+      //comparativos (estudar mais);
+      //callbacks;
+      //promise;
+      //Async/Await
+    </script>
+</body>
+</html>
